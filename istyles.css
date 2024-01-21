@@ -1,0 +1,107 @@
+/*  Nooooooo  */ 
+/*  改変や複製を一切禁止します。  */
+/*  https://github.com/Nooooooo-0328/ToDo */
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+#app {
+  margin-top: 30px;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4caf50;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+li.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delete-button {
+  background-color: #ff5c5c;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #d43f3f;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.options {
+  display: flex;
+}
+
+.option-button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+
+.option-button:hover {
+  background-color: #ddd;
+}
