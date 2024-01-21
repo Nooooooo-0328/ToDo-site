@@ -33,21 +33,45 @@ function updateTaskList(taskList) {
     tasks.forEach((task, index) => {
         const listItem = document.createElement('li');
         listItem.id = `task-${index}`;
-        listItem.innerHTML = `
-            <div class="task-container">
-                <span class="task-text">${task.text}</span>
-                <span class="date">${task.date}</span>
-                <div class="options">
-                    <button class="delete-button" onclick="deleteTask(${index})">削除</button>
-                </div>
-            </div>
-        `;
-        taskList.appendChild(listItem);
+        listItem.classList.add('show');
 
-        setTimeout(() => {
-            listItem.classList.add('show');
-        }, 0);
+        const taskContainer = document.createElement('div');
+        taskContainer.classList.add('task-container');
+
+        const taskText = document.createElement('span');
+        taskText.classList.add('task-text');
+        taskText.innerText = task.text;
+        taskText.addEventListener('click', () => editTask(index));
+
+        const dateSpan = document.createElement('span');
+        dateSpan.classList.add('date');
+        dateSpan.innerText = task.date;
+
+        const optionsDiv = document.createElement('div');
+        optionsDiv.classList.add('options');
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-button');
+        deleteButton.innerText = '削除';
+        deleteButton.addEventListener('click', () => deleteTask(index));
+
+        optionsDiv.appendChild(deleteButton);
+        taskContainer.appendChild(taskText);
+        taskContainer.appendChild(dateSpan);
+        taskContainer.appendChild(optionsDiv);
+        listItem.appendChild(taskContainer);
+        taskList.appendChild(listItem);
     });
+}
+
+function editTask(index) {
+    const newText = prompt('タスクを編集してください:', tasks[index].text);
+    if (newText !== null) {
+        tasks[index].text = newText.trim();
+        saveTasksToLocalStorage();
+        const taskList = document.getElementById('taskList');
+        updateTaskList(taskList);
+    }
 }
 
 function getCurrentDate() {
